@@ -1,0 +1,4 @@
+body{margin:0;font-family:Arial;background:#001;color:white;}
+.hero{text-align:center;padding:120px 20px;}
+.gallery{display:flex;gap:20px;justify-content:center;padding:40px;}
+.gallery img{width:300px;border-radius:20px;}
