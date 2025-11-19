@@ -1,4 +1,104 @@
-body{margin:0;font-family:Arial;background:#001;color:white;}
-.hero{text-align:center;padding:120px 20px;}
-.gallery{display:flex;gap:20px;justify-content:center;padding:40px;}
-.gallery img{width:300px;border-radius:20px;}
+/* Modern dark gradient + neon accents, glassy cards, responsive layout */
+:root{
+  --accent-a: #00d4ff;
+  --accent-b: #0074ff;
+  --glass: rgba(255,255,255,0.06);
+  --muted: rgba(234,246,255,0.75);
+  --card-shadow: 0 12px 30px rgba(2,6,23,0.7);
+  --radius: 14px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:#eaf6ff}
+body.theme{
+  background: linear-gradient(180deg,#071428 0%, #071f2a 60%);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Header */
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:18px 6vw;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter: blur(6px);position:sticky;top:0;z-index:40}
+.brand a{font-weight:700;text-decoration:none;color:var(--accent-a);font-size:20px}
+.brand a span{color:var(--accent-b);margin-left:6px}
+.nav-toggle{display:none;background:transparent;border:0;color:#fff;font-size:22px}
+.main-nav a{color:#eaf6ff;margin:0 12px;text-decoration:none;padding:8px 10px;border-radius:8px}
+.main-nav a:hover{background:rgba(255,255,255,0.04)}
+
+/* Layout helpers */
+.container{max-width:1200px;margin:24px auto;padding:0 20px}
+.reveal{opacity:0;transform:translateY(18px);transition:all 650ms cubic-bezier(.2,.9,.2,1)}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 520px;gap:36px;align-items:center;padding:56px 6vw}
+.hero-left{max-width:640px}
+.hero-title{font-size:44px;line-height:1.02;margin:0 0 12px;color:#fff}
+.hero-lead{color:var(--muted);font-size:18px;margin-bottom:18px}
+.hero-cta{display:flex;gap:12px;margin-bottom:18px}
+.btn{display:inline-block;padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:700}
+.btn.primary{background:linear-gradient(90deg,var(--accent-a),var(--accent-b));color:#04213a;box-shadow:0 8px 30px rgba(0,116,255,0.12)}
+.btn.outline{background:transparent;border:1px solid rgba(255,255,255,0.07);color:#eaf6ff}
+
+/* Hero media - layered images */
+.hero-media{position:relative;height:380px;display:flex;align-items:center;justify-content:center}
+.hero-img{position:absolute;width:320px;height:220px;object-fit:cover;border-radius:12px;box-shadow:var(--card-shadow);transition:transform .6s cubic-bezier(.22,.95,.3,1), filter .3s}
+.hero-img-1{left:calc(50% - 360px);top:20px;transform:translateY(-6px)}
+.hero-img-2{left:calc(50% - 80px);top:0}
+.hero-img-3{left:calc(50% + 200px);top:30px;transform:translateY(6px)}
+.hero-img:hover{filter:brightness(1.04);transform:scale(1.02)}
+
+/* Feature cards */
+.features{display:flex;gap:18px;padding:36px 6vw}
+.feature{flex:1;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:12px;box-shadow:var(--card-shadow)}
+.feature h3{color:var(--accent-a)}
+
+/* Gallery grid */
+.gallery{padding:28px 6vw}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.grid figure{background:rgba(255,255,255,0.02);padding:10px;border-radius:12px}
+.grid img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+.grid figcaption{margin-top:8px;color:var(--muted);font-size:14px}
+
+/* two-column CTA */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:28px 6vw}
+.muted{color:var(--muted)}
+
+/* content grids used on other pages */
+.content-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.panel{background:var(--glass);padding:18px;border-radius:12px;box-shadow:var(--card-shadow)}
+
+/* attractions / hotels */
+.attractions-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.attraction{display:flex;gap:14px;background:var(--glass);padding:12px;border-radius:12px;align-items:center}
+.attraction img{width:120px;height:90px;object-fit:cover;border-radius:8px}
+
+/* accommodations list */
+.accommodation-list .hotel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px; margin-bottom:12px; box-shadow:var(--card-shadow)}
+.small{font-size:14px;color:var(--muted)}
+
+/* lifestyle */
+.lifestyle-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.lifestyle-box{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px}
+
+/* contact form */
+.contact-form form{background:var(--glass);padding:18px;border-radius:12px;box-shadow:var(--card-shadow)}
+input,textarea{width:100%;padding:12px;margin-top:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#eaf6ff}
+label{display:block;margin-top:12px;color:var(--muted)}
+
+/* footer */
+.site-footer{display:flex;justify-content:space-between;padding:18px 6vw;color:rgba(234,246,255,0.55);font-size:14px}
+
+/* reveal/visible */
+.reveal.visible{opacity:1;transform:none}
+
+/* responsive */
+@media (max-width:1000px){
+  .hero{grid-template-columns:1fr;padding:36px 4vw}
+  .hero-media{order:-1;height:260px}
+  .nav-toggle{display:block}
+  .main-nav{display:none;position:fixed;right:18px;top:68px;background:rgba(2,6,23,0.9);padding:12px;border-radius:8px}
+  .main-nav.show{display:flex;flex-direction:column}
+}
+@media (max-width:600px){
+  .hero-title{font-size:28px}
+  .hero-img{width:240px;height:160px}
+}
